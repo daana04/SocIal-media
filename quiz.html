@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <title>Social Media Effects Quiz</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        #quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: left;
+        }
+
+        h1 {
+            color: #3498db;
+            text-align: center;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        input[type="radio"] {
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>Social Media Effects Quiz</h1>
+
+        <div class="question" id="question1">
+            <p>1. How can cyberbullying be related to social media?</p>
+            <div class="options" data-question="1">
+                <input type="radio" name="q1" value="a">a. It has no connection<br>
+                <input type="radio" name="q1" value="b">b. Social media can be a platform for cyberbullying<br>
+                <input type="radio" name="q1" value="c">c. Cyberbullying is only related to email<br>
+            </div>
+        </div>
+
+        <div class="question" id="question2">
+            <p>2. What is a potential negative impact of social media on self-esteem?</p>
+            <div class="options" data-question="2">
+                <input type="radio" name="q2" value="a">a. Increased self-esteem<br>
+                <input type="radio" name="q2" value="b">b. No impact on self-esteem<br>
+                <input type="radio" name="q2" value="c">c. Comparing oneself to others and feeling inadequate<br>
+            </div>
+        </div>
+
+        <div class="question" id="question3">
+            <p>3. How can social media affect sleep patterns?</p>
+            <div class="options" data-question="3">
+                <input type="radio" name="q3" value="a">a. Improved sleep patterns<br>
+                <input type="radio" name="q3" value="b">b. No impact on sleep<br>
+                <input type="radio" name="q3" value="c">c. Disrupted sleep due to excessive use<br>
+            </div>
+        </div>
+
+        <div class="question" id="question4">
+            <p>4. What is "FOMO" in the context of social media?</p>
+            <div class="options" data-question="4">
+                <input type="radio" name="q4" value="a">a. Fear of Missing Out<br>
+                <input type="radio" name="q4" value="b">b. Finding Opportunities in Media Outlets<br>
+                <input type="radio" name="q4" value="c">c. Formal Observation of Media Occurrences<br>
+            </div>
+        </div>
+
+        <div class="question" id="question5">
+            <p>5. How can social media impact real-life social interactions?</p>
+            <div class="options" data-question="5">
+                <input type="radio" name="q5" value="a">a. No impact on real-life interactions<br>
+                <input type="radio" name="q5" value="b">b. Improved real-life interactions<br>
+                <input type="radio" name="q5" value="c">c. Decreased face-to-face interactions<br>
+            </div>
+        </div>
+
+        <button onclick="submitQuiz()">Submit Answers</button>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            // Calculate score
+            let score = 0;
+            const questions = document.querySelectorAll('.question');
+            
+            questions.forEach(question => {
+                const selectedOption = question.querySelector('input:checked');
+                if (selectedOption) {
+                    const correctAnswer = selectedOption.value === getCorrectAnswer(question.id);
+                    if (correctAnswer) {
+                        score++;
+                    }
+                }
+            });
+
+            // Display result
+            alert(`Your score: ${score} out of ${questions.length}`);
+        }
+
+        function getCorrectAnswer(questionId) {
+            switch (questionId) {
+                case 'question1':
+                    return 'b';
+                case 'question2':
+                    return 'c';
+                case 'question3':
+                    return 'c';
+                case 'question4':
+                    return 'a';
+                case 'question5':
+                    return 'c';
+                default:
+                    return '';
+            }
+        }
+    </script>
+</body>
+</html>
